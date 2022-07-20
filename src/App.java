@@ -33,10 +33,6 @@ public class App {
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
             String body = response.body();
 
-            // extrair só os dados que interessam (titulo, poster, classificacao)
-            // var jsonParser = new JsonParser();
-            // List<Map<String, String>> listaDeFilmes = jsonParser.parse(body);
-
             Gson g = new Gson();
             Imdb c = g.fromJson(body, Imdb.class);
             List<Map<String, String>> listaDeFilmes = c.items;
@@ -52,23 +48,6 @@ public class App {
                 System.out.println("\u2B50".repeat(intRating));
                 System.out.println("===========================================");
             }
-
-            Random r = new Random();
-            int low = 1;
-            int high = listaDeFilmes.size();
-            int result = r.nextInt(high - low) + low;
-
-            String nota = null;
-            System.out.println("Titulo: \u001b[1m" + listaDeFilmes.get(result).get("title"));
-            System.out.println("Poster: \u001b[1m" + listaDeFilmes.get(result).get("image"));
-            System.out.print("Qual a sua Avaliação para este Filme: ");
-
-            Scanner in = new Scanner(System.in);
-            nota = in.nextLine();
-            System.out.println("\u001b[37m \u001b[45m Classificação: " + nota + "\u001b[m");
-            int intRating = (int) Double.parseDouble(nota);
-            System.out.println("\u2B50".repeat(intRating));
-
 
         } catch (IOException ex) {
             ex.printStackTrace();
