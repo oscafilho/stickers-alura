@@ -1,3 +1,5 @@
+package br.com.alura.util;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -14,14 +16,7 @@ public class GeradorDeFigurinhas {
 
     public void cria(InputStream inputStream, String nomeArquivo) throws Exception {
 
-        // leitura da imagem
-        // InputStream inputStream = new FileInputStream(new
-        // File("entrada/filme01.png"));
-        // InputStream inputStream = new
-        // URL("https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@.jpg").openStream();
         BufferedImage imagemOriginal = ImageIO.read(inputStream);
-
-        // cria nova imagem em memoria com transparencia e com tamanho novo
 
         int largura = imagemOriginal.getWidth();
         int altura = imagemOriginal.getHeight();
@@ -30,7 +25,6 @@ public class GeradorDeFigurinhas {
         BufferedImage novaImagem = new BufferedImage(largura, novaAltura, BufferedImage.TRANSLUCENT);
 
         // copiar a imagem original para nova imagem (em memoria)
-
         Graphics2D graphics = (Graphics2D) novaImagem.getGraphics();
         graphics.drawImage(imagemOriginal, 0, 0, null);
 
@@ -45,7 +39,6 @@ public class GeradorDeFigurinhas {
         int x = ((largura - fm.stringWidth(txtImagem)) / 2);
 
         graphics.drawString(txtImagem, x, novaAltura - 100);
-
 
         // escrever a nova imagem em um arquivo
         String path = "saida/";
