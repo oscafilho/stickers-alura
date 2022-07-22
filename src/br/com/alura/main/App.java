@@ -1,3 +1,4 @@
+package br.com.alura.main;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -28,7 +29,6 @@ public class App {
 
             Conteudo conteudo = conteudos.get(i);
 
-            // var classificacao = conteudo.get("imDbRating");
             InputStream inputStream = new URL(conteudo.getUrlImage()).openStream();
             String nomeArquivo = conteudo.getTitulo() + ".png";
 
